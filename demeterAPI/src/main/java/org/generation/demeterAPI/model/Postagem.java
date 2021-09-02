@@ -39,6 +39,9 @@ public class Postagem {
 	
 	@ManyToOne 
 	@JsonIgnoreProperties ("postagem")
-	private List<Usuario> usuario;
-
+	private Usuario usuario;
+	
+	@ManyToOne 
+	@JsonIgnoreProperties ("postagem")
+	private Tema tema;
 }

@@ -11,11 +11,11 @@
 package org.generation.demeterAPI.repository;
 
 import java.util.List;
-
 import org.generation.demeterAPI.model.Tema;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TemaRepository extends JpaRepository<Tema, Long> {
+	
 	public List<Tema> findAllByCategoriaContainingIgnoreCase(String categoria); // -> Find by Categoria, encontra as
 																				// entradas pela Categoria e ignora
 																				// maiusculas e minusculas
