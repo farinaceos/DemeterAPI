@@ -40,10 +40,15 @@ public class PostagemController {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
-	@GetMapping("/data/{data}")	//Mapping da Função GET BY categoria -> Retorna a entrada de acordo com a categoria na URL
+	@GetMapping("/status/{ativo}")
+	public ResponseEntity <List<Postagem>> GetByAtivo(@PathVariable boolean ativo){
+		return ResponseEntity.ok(repository.findAllByAtivo(ativo));
+	}
+	
+	/*@GetMapping("/data/{data}")	//Mapping da Função GET BY categoria -> Retorna a entrada de acordo com a categoria na URL
 	public ResponseEntity <List<Postagem>> GetByData(@PathVariable String data){
 		return ResponseEntity.ok(repository.findAllByData(data));
-	}
+	}*/
 	
 	@PostMapping							//Mapping da Função POST -> Cria a entrada no Banco de Dados
 	public ResponseEntity <Postagem> Post (@RequestBody Postagem postagem){ // -> Envia dados via Body da requisição http por JSON

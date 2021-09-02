@@ -2,7 +2,6 @@ package org.generation.demeterAPI.controller;
 
 import java.util.List;
 
-import org.generation.demeterAPI.model.Tema;
 import org.generation.demeterAPI.model.Usuario;
 import org.generation.demeterAPI.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

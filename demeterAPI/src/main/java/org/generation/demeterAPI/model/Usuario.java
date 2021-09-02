@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = " tb_Usuario")
+@Table(name = " tb_usuario")
 public class Usuario {
 
 	
@@ -35,8 +35,8 @@ public class Usuario {
 	@Size(min = 8, max = 40)
 	private String senha;
 
-	@OneToMany (mappedBy = "Usuario", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties ("Usuario")
+	@OneToMany (mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties ("usuario")
 	private List<Postagem> postagem;
 	
 
