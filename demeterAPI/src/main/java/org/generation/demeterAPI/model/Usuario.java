@@ -32,7 +32,6 @@ public class Usuario {
 	private String nome;
 
 	@NotBlank
-	@Size(min = 8, max = 40)
 	private String senha;
 
 	@OneToMany (mappedBy = "usuario", cascade = CascadeType.ALL)
