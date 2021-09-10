@@ -1,9 +1,12 @@
 package org.generation.demeterAPI.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.generation.demeterAPI.model.UserLogin;
 import org.generation.demeterAPI.model.Usuario;
 import org.generation.demeterAPI.repository.UsuarioRepository;
+import org.generation.demeterAPI.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +27,8 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository repository;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@GetMapping								//Mapping da função GET -> Retorna todas as entradas no Banco de Dados
 	public ResponseEntity <List<Usuario>> GetAll(){
@@ -46,10 +51,10 @@ public class UsuarioController {
 		return ResponseEntity.ok(repository.findAllByEmailContainingIgnoreCase(email));
 	}
 	
-	@PostMapping							//Mapping da Função POST -> Cria a entrada no Banco de Dados
+	/*@PostMapping							//Mapping da Função POST -> Cria a entrada no Banco de Dados
 	public ResponseEntity <Usuario> Post (@RequestBody Usuario usuario){ // -> Envia dados via Body da requisição http por JSON
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
-	}
+	}*/
 	
 	@PutMapping							//Mapping da Função POST -> Cria a entrada no Banco de Dados
 	public ResponseEntity <Usuario> Put (@RequestBody Usuario usuario){ // -> Envia dados via Body da requisição http por JSON
@@ -60,4 +65,20 @@ public class UsuarioController {
 	public void Delete (@PathVariable long id) { // -> Envia dados via URL
 		repository.deleteById(id);
 	}
+	
+	
+	@PostMapping("/logar")
+	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user) {
+		return usuarioService.Logar(user)
+				.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
+		return usuarioService.CadastrarUsuario(usuario)
+				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.CONFLICT).build());
+	}
+	
 }
