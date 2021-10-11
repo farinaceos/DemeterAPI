@@ -42,17 +42,17 @@ public class Tema {
 	private long id;
 	
 	//Criação do atributo Categoria como String, tamanho máximo de 255 caracteres
-	@NotNull
+
 	@Size(max = 255)
 	private String categoria;
 	
 	//Criação do atributo Filtro como String, tamanho máximo de 255 caracteres
-	@NotNull
+
 	@Size(max = 255)
 	private String filtro;
 	
 	//Criação do atributo Localidade como String, tamanho máximo de 255 caracteres
-	@NotNull
+
 	@Size(max = 255)
 	private String localidade;
 	

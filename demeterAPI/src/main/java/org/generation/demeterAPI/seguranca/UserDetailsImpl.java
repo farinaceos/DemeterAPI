@@ -10,12 +10,16 @@ public class UserDetailsImpl implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
 	
+	private long id;
 	private String userName;
 	private String password;
+	private String foto;
 	
 	public UserDetailsImpl(Usuario user) {
 		this.userName = user.getEmail();
 		this.password = user.getSenha();
+		this.id = user.getId();
+		this.foto = user.getFoto();
 	}
 	
 	public UserDetailsImpl() {}

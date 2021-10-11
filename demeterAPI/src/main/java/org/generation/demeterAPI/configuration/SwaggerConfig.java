@@ -28,7 +28,7 @@ public class SwaggerConfig {
 	}
 
 	public static ApiInfo metadata() {
-		return new ApiInfoBuilder().title("API - Demeter").description("Projeto API Demeter - Rede Social")
+		return new ApiInfoBuilder().title("API - Boa Ação").description("Projeto API Boa Ação - Rede Social")
 				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("https://github.com/farinaceos")
 				.contact(contact()).build();
 	}

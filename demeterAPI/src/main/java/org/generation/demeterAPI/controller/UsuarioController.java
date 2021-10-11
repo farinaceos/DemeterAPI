@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController					//Anotação para declarar que é uma API Rest
 @RequestMapping("/usuario")		//Anotação para indicar qual o endereço do Mapping
-@CrossOrigin("*")				//Anotação para indicar que recebe informações de diversas origens
+@CrossOrigin(origins = "*", allowedHeaders = "*")				//Anotação para indicar que recebe informações de diversas origens
 public class UsuarioController {
 
 	@Autowired
@@ -68,8 +68,8 @@ public class UsuarioController {
 	
 	
 	@PostMapping("/logar")
-	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user) {
-		return usuarioService.Logar(user)
+	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> UserLogin) {
+		return usuarioService.Logar(UserLogin)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
